@@ -1,0 +1,40 @@
+{
+  "name": "backend-cli-projects",
+  "version": "1.0.0",
+  "description": "JavaScript and TypeScript CLI Hello World projects",
+  "main": "index.js",
+  "scripts": {
+    "install:all": "npm install && cd javascript && npm install && cd ../typescript && npm install && cd ..",
+    "build:ts": "cd typescript && npm run build",
+    "build:ts:watch": "cd typescript && npm run build:watch",
+    "start:js": "cd javascript && npm start",
+    "start:ts": "cd typescript && npm start",
+    "start:both": "concurrently \"npm run start:js\" \"npm run start:ts\"",
+    "dev:js": "cd javascript && npm run dev",
+    "dev:ts": "cd typescript && npm run dev",
+    "dev:both": "concurrently \"npm run dev:js\" \"npm run dev:ts\"",
+    "lint": "eslint . --ext .js,.ts",
+    "lint:fix": "eslint . --ext .js,.ts --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "keywords": [
+    "cli",
+    "javascript",
+    "typescript",
+    "hello-world",
+    "backend"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "concurrently": "^8.2.0",
+    "eslint": "^8.45.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "prettier": "^3.0.0",
+    "typescript": "^5.1.6"
+  }
+}
