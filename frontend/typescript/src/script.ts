@@ -1,31 +1,23 @@
-// TypeScript Hello World
-interface HelloWorldConfig {
-  message: string;
-  elementId: string;
-}
+import { showAll } from "./Vue/PersonArray.js";
+import { Person } from "./Model/Person.js"
+import { persons } from "./BDD/Persons.js"
+import { showFilterButtons } from "./Vue/FilterButtons.js";
 
-class HelloWorld {
-  private config: HelloWorldConfig;
+export class CurrentPersons{
+  public constructor(private current:Person[] = persons.slice()){}
 
-  constructor(config: HelloWorldConfig) {
-    this.config = config;
+  public getCurrent(): Person[] {
+    return this.current;
   }
 
-  public display(): void {
-    const element: HTMLElement | null = document.getElementById(
-      this.config.elementId
-    );
-    if (element) {
-      element.textContent = this.config.message;
-    }
+  public setCurrent(current: Person[]): void {
+    this.current = current;
   }
 }
 
-// Wait for DOM to be fully loaded
+export let current:CurrentPersons=new CurrentPersons();
+
 document.addEventListener('DOMContentLoaded', (): void => {
-  const helloWorld = new HelloWorld({
-    message: 'Hello World from TypeScript!',
-    elementId: 'hello-world',
-  });
-  helloWorld.display();
+  showFilterButtons();
+  showAll();
 });
